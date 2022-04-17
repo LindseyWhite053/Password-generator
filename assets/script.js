@@ -15,8 +15,22 @@ function getPasswordLength (){
 }
 
 //lower case characters prompt
+function getLowerCase () {
+  var lowerCaseConfirm = window.confirm("Would you like to include lower case characters in your password?");
+  if (lowerCaseConfirm) {
+    allCharacters = allCharacters + lowerCase
+    console.log("Lowercase included in password");
+  } 
+}
 
 //uppercase characters prompt
+function getUpperCase () {
+  var upperCaseConfirm = window.confirm ("Would you like to include uppercase characters in your password?");
+  if (upperCaseConfirm) {
+    allCharacters = allCharacters + upperCase
+    console.log("Uppercase included in password");
+  }
+}
 
 //special characters confirmation
 
@@ -25,6 +39,9 @@ function generatePassword() {
 //run password criteria prompts
 getPasswordLength();
 
+getLowerCase();
+
+getUpperCase();
 
 //show which charaacters will be included in password
 console.log ("All characters included in password generation will be" + allCharacters)
