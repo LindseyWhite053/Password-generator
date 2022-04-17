@@ -5,6 +5,7 @@ var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var specialCharacters = ""
 var allCharacters = ""
 
+
 //Determine password length
 function getPasswordLength (){
   while (passwordLength < 8 || passwordLength > 128 || passwordLength === "" || passwordLength === null) {
@@ -33,23 +34,40 @@ function getUpperCase () {
 }
 
 //special characters confirmation
+function getSpecialCharacters(){ 
+  var specialCharactersConfirm = window.confirm("Would you like to include special characters in your password?");
+  if (specialCharactersConfirm) {
+    specialCharacters = window.prompt ("Which special characters would you like to include?");
+    allCharacters = allCharacters + specialCharacters
+    console.log("Special characters included in the passweord will be "+ specialCharacters);
+  }
+}
 
+//Use all the above criteria to create a password
 function generatePassword() {
+while (passwordLength === "") {
 
-//run password criteria prompts
+  //run password criteria prompts
 getPasswordLength();
 
 getLowerCase();
 
 getUpperCase();
 
-//show which charaacters will be included in password
-console.log ("All characters included in password generation will be" + allCharacters)
+getSpecialCharacters();
 
-//generate password with given criteria 
+ //show which characters will be included in password
+ console.log ("All characters included in password generation will be " + allCharacters)
+}
+
+
+for (var i = 0; i < passwordLength; ++i) {
+   password += allCharacters[Math.floor(Math.random() * passwordLength)];
+}
 
 //return generated password
-return password;
+  console.log("Your new password is " + password);
+  return password;
 };
 
 // Get references to the #generate element
