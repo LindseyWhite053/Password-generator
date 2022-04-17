@@ -19,7 +19,6 @@ var promptPasswordMax = window.confirm ("Include uppercase characters in your pa
 //special characters prompt
 var promptPasswordMax = window.confirm ("Include special characters in your password?");
 
-
 //return generated password
 return password;
 };
