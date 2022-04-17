@@ -1,29 +1,39 @@
-function generatePassword() {
-// empty string variable for the for loop below
-var password = "password";
+var password = "";
+var passwordLength = ""
+var lowerCase = "abcdefghijklmnopqrstuvwxyz"
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var specialCharacters = ""
+var allCharacters = ""
 
-var minNumbers = ""
-var minLowerCase = ""
-var minUpperCase = ""
-var minSpecialCharacters = ""
-
-//number of characters prompt
-var promptPasswordMin = window.prompt ("Please enter the number of characters you want for you new password.  It must be more than 8 but less than 128.");
+//Determine password length
+function getPasswordLength (){
+  while (passwordLength < 8 || passwordLength > 128 || passwordLength === "" || passwordLength === null) {
+    passwordLength = prompt("Please enter the number of characters you want for your new password.  It must be more than 8 but less than 128 characters.");
+  }
+  
+  console.log("Password length will be " + passwordLength + " charaters long");
+}
 
 //lower case characters prompt
-var promptPasswordMax = window.confirm ("Include lower case characters in your password?");
 
 //uppercase characters prompt
-var promptPasswordMax = window.confirm ("Include uppercase characters in your password?");
 
-//special characters prompt
-var promptPasswordMax = window.confirm ("Include special characters in your password?");
+//special characters confirmation
+
+function generatePassword() {
+
+//run password criteria prompts
+getPasswordLength();
+
+
+//show which charaacters will be included in password
+console.log ("All characters included in password generation will be" + allCharacters)
+
+//generate password with given criteria 
 
 //return generated password
 return password;
 };
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
