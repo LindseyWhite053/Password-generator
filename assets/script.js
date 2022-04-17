@@ -2,7 +2,8 @@ var password = "";
 var passwordLength = ""
 var lowerCase = "abcdefghijklmnopqrstuvwxyz"
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var specialCharacters = ""
+var numbers = "01234567890"
+var specialCharacters = "!@#$%^&*()"
 var allCharacters = ""
 
 
@@ -16,58 +17,67 @@ function getPasswordLength (){
 }
 
 //lower case characters prompt
-function getLowerCase () {
+function getCharSet () {
   var lowerCaseConfirm = window.confirm("Would you like to include lower case characters in your password?");
   if (lowerCaseConfirm) {
     allCharacters = allCharacters + lowerCase
     console.log("Lowercase included in password");
-  } 
+
 }
 
 //uppercase characters prompt
-function getUpperCase () {
+
   var upperCaseConfirm = window.confirm ("Would you like to include uppercase characters in your password?");
   if (upperCaseConfirm) {
     allCharacters = allCharacters + upperCase
     console.log("Uppercase included in password");
-  }
+
 }
 
 //special characters confirmation
-function getSpecialCharacters(){ 
+
+  var numbersConfirm = window.confirm("Would you like to include numbers in your password?");
+  if (numbersConfirm) {
+    allCharacters = allCharacters + numbers
+    console.log("Numbers included in the passweord will be " + numbers);
+
+}
+
+//special characters confirmation
+
   var specialCharactersConfirm = window.confirm("Would you like to include special characters in your password?");
   if (specialCharactersConfirm) {
-    specialCharacters = window.prompt ("Which special characters would you like to include?");
     allCharacters = allCharacters + specialCharacters
-    console.log("Special characters included in the passweord will be "+ specialCharacters);
+    console.log("Special characters included in the passweord will be " + specialCharacters);
   }
-}
+};
+
 
 //Use all the above criteria to create a password
 function generatePassword() {
-while (passwordLength === "") {
+  while (passwordLength === "") {
 
   //run password criteria prompts
-getPasswordLength();
+  getPasswordLength();
 
-getLowerCase();
+  getCharSet();
 
-getUpperCase();
+  if (allCharacters === "" || null) {
+    window.alert("Please select at least one character set.");
+  getCharSet();
+  }
 
-getSpecialCharacters();
+  //show which characters will be included in password
+  console.log ("All characters included in password generation will be " + allCharacters)
+  }
 
- //show which characters will be included in password
- console.log ("All characters included in password generation will be " + allCharacters)
-}
+  for (var i = 0; i < passwordLength; ++i) {
+    password += allCharacters[Math.floor(Math.random() * allCharacters.length)];
+  }
 
-
-for (var i = 0; i < passwordLength; ++i) {
-   password += allCharacters[Math.floor(Math.random() * passwordLength)];
-}
-
-//return generated password
   console.log("Your new password is " + password);
-  return password;
+   //return generated password
+    return password;
 };
 
 // Get references to the #generate element
